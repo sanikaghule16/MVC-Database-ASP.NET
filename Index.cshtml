@@ -1,0 +1,22 @@
+@model IEnumerable<MvCDtabase.Models.Student>
+@{
+    ViewBag.Title = "Index";
+}
+<table class="table">
+    <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Actions</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.FirstName</td>
+            <td>@item.LastName</td>
+            <td>
+                <a href="@Url.Action("Edit", new { id = item.ID })">Edit</a> |
+                <a href="@Url.Action("Delete", new { id = item.ID })" onclick="return confirm('Are you sure?')">Delete</a>
+            </td>
+        </tr>
+    }
+</table>
